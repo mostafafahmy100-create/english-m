@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mr Mostafa Nasar Learning | B1–B2 English Journey</title>
+<style>
+:root{
+  --ink:#1a2340;
+  --paper:#eef4ff;
+  --paper-dark:#dfeaff;
+  --teal:#2f6fed;
+  --teal-dark:#1b3fae;
+  --gold:#ffb703;
+  --brick:#ff5d73;
+  --cream-line:#c9dcff;
+  --ok:#06b06e;
+  --bad:#ff5d73;
+  --mint:#06d6a0;
+  --purple:#8338ec;
+  --sun:#ffb703;
+  --coral:#ff6f59;
+  --shadow: 0 10px 30px rgba(47,111,237,.18);
+  --radius: 18px;
+}
+*{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  font-family: 'Georgia', 'Times New Roman', serif;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(200,147,42,.08), transparent 40%),
+    radial-gradient(circle at 80% 90%, rgba(15,82,87,.08), transparent 40%),
+    var(--paper);
+  color:var(--ink);
+  line-height:1.7;
+}
+.ar{ font-family:'Tahoma','Segoe UI',sans-serif; direction:rtl; }
+h1,h2,h3,.brand{ font-family:'Georgia',serif; letter-spacing:.3px; }
+.eng-font{ font-family:'Georgia',serif; }
+
+/* ---------- TOP NAV ---------- */
+header{
+  position:sticky; top:0; z-index:100;
+  background:linear-gradient(180deg, var(--teal-dark), var(--teal));
+  color:#fdf6e3;
+  box-shadow:0 4px 18px rgba(0,0,0,.25);
+}
+.nav-wrap{
+  max-width:1200px; margin:0 auto; padding:10px 18px;
+  display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap;
+}
+.brand{ display:flex; align-items:center; gap:10px; }
+.brand .stamp-logo{
+  width:46px;height:46px;border-radius:50%;
+  border:2px dashed var(--gold);
+  display:flex;align-items:center;justify-content:center;
+  font-weight:bold;color:var(--gold);font-size:18px;
+  transform:rotate(-8deg);
+  flex-shrink:0;
+}
+.brand .txt{ display:flex; flex-direction:column; line-height:1.1; }
+.brand .txt b{ font-size:19px; color:#fdf6e3;}
+.brand .txt span{ font-size:11px; color:#cfe3d8; letter-spacing:2px; text-transform:uppercase;}
+
+nav.icons{ display:flex; gap:6px; flex-wrap:wrap; }
+nav.icons button{
+  background:rgba(255,255,255,.06);
+  border:1px solid rgba(255,255,255,.18);
+  color:#fdf6e3;
+  padding:8px 14px;
+  border-radius:30px;
+  cursor:pointer;
+  font-size:14px;
+  display:flex; align-items:center; gap:6px;
+  transition:.2s;
+  font-family:'Tahoma',sans-serif;
+}
+nav.icons button:hover{ background:var(--gold); color:var(--teal-dark); border-color:var(--gold); transform:translateY(-2px);}
+
+/* ---------- HERO ---------- */
+.hero{
+  position:relative;
+  padding:70px 20px 90px;
+  text-align:center;
+  color:#fdf6e3;
+  background:
+    linear-gradient(160deg, rgba(10,58,62,.92), rgba(15,82,87,.85)),
+    repeating-linear-gradient(45deg, rgba(255,255,255,.02) 0 2px, transparent 2px 40px);
+  overflow:hidden;
+}
+.hero::before, .hero::after{
+  content:"✈";
+  position:absolute; font-size:60px; opacity:.12;
+}
+.hero::before{ top:20px; left:8%; transform:rotate(-20deg);}
+.hero::after{ bottom:10px; right:10%; transform:rotate(15deg);}
+.hero h1{ font-size:clamp(28px,5vw,48px); margin:0 0 10px; }
+.hero .sub-ar{ font-size:20px; margin-bottom:6px; color:#f3e3c3; }
+.hero .sub-en{ font-size:16px; color:#cfe3d8; max-width:680px; margin:0 auto 26px; }
+.passport{
+  display:inline-flex; gap:18px; flex-wrap:wrap; justify-content:center; margin-top:18px;
+}
+.passport .stat{
+  background:rgba(255,255,255,.08); border:1px solid rgba(255,255,255,.2);
+  padding:12px 20px; border-radius:14px; min-width:120px;
+}
+.passport .stat b{ display:block; font-size:24px; color:var(--gold); }
+.passport .stat span{ font-size:12px; color:#e5ead1;}
+
+section{ max-width:1100px; margin:0 auto; padding:60px 20px; }
+.section-head{ text-align:center; margin-bottom:36px; }
+.section-head .eyebrow{
+  color:var(--brick); font-family:'Tahoma',sans-serif; letter-spacing:3px;
+  font-size:12px; text-transform:uppercase; font-weight:bold;
+}
+.section-head h2{ font-size:32px; margin:6px 0 8px; color:var(--teal-dark);}
+.section-head p{ color:#5a5245; font-family:'Tahoma',sans-serif; font-size:15px;}
+
+/* ---------- CARDS GRID (boarding passes) ---------- */
+.cards-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:22px; }
+.pass-card{
+  background:#fffdf6;
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  border:1px solid var(--cream-line);
+  overflow:hidden;
+  cursor:pointer;
+  transition:.25s;
+  position:relative;
+}
+.pass-card:hover{ transform:translateY(-6px); box-shadow:0 16px 34px rgba(15,82,87,.22); }
+.pass-card .strip{
+  background:linear-gradient(90deg,var(--teal),var(--teal-dark));
+  color:#fff; padding:10px 16px; font-size:12px; letter-spacing:2px;
+  display:flex; justify-content:space-between; font-family:'Tahoma',sans-serif;
+}
+.pass-card.acc-0 .strip{ background:linear-gradient(90deg,#2f6fed,#1b3fae); }
+.pass-card.acc-1 .strip{ background:linear-gradient(90deg,#ff6f59,#d84a3a); }
+.pass-card.acc-2 .strip{ background:linear-gradient(90deg,#06d6a0,#049270); }
+.pass-card.acc-3 .strip{ background:linear-gradient(90deg,#8338ec,#5a1fb0); }
+.pass-card .body{ padding:18px 18px 22px;}
+.pass-card h3{ margin:0 0 6px; font-size:20px; color:var(--teal-dark);}
+.pass-card .ar-title{ font-size:15px; color:var(--brick); margin-bottom:10px;}
+.pass-card .meta{ display:flex; gap:10px; font-family:'Tahoma',sans-serif; font-size:12px; color:#7a6f5c; flex-wrap:wrap;}
+.pass-card .meta span{ background:var(--paper-dark); padding:4px 10px; border-radius:20px;}
+.pass-card .dots{
+  border-top:2px dashed var(--cream-line); margin-top:14px; padding-top:10px;
+  font-family:'Tahoma',sans-serif; font-size:13px; color:var(--teal); font-weight:bold;
+}
+.pass-card.done .strip{ background:linear-gradient(90deg,var(--ok),#1f5c39); }
+.pass-card.done::after{
+  content:"✔ DONE"; position:absolute; top:44px; right:-30px; background:var(--ok); color:#fff;
+  font-size:11px; padding:3px 34px; transform:rotate(35deg); font-family:'Tahoma',sans-serif; letter-spacing:1px;
+}
+
+/* ---------- MODAL (passage reader) ---------- */
+.overlay{
+  display:none; position:fixed; inset:0; background:rgba(15,30,28,.6);
+  z-index:200; padding:26px; overflow:auto; backdrop-filter:blur(2px);
+}
+.overlay.active{ display:flex; align-items:flex-start; justify-content:center;}
+.reader{
+  background:#fffdf6; max-width:820px; width:100%; border-radius:20px;
+  box-shadow:0 30px 60px rgba(0,0,0,.4); position:relative; margin:20px auto;
+  border:1px solid var(--cream-line);
+}
+.reader-head{
+  background:linear-gradient(120deg,var(--teal-dark),var(--teal));
+  color:#fdf6e3; padding:22px 26px; border-radius:20px 20px 0 0; position:relative;
+}
+.reader-head h3{ margin:0 0 4px; font-size:24px;}
+.reader-head .ar-title{ font-size:16px; color:#f3e3c3;}
+.close-btn{
+  position:absolute; top:16px; right:18px; background:rgba(255,255,255,.15); border:none;
+  color:#fdf6e3; width:34px; height:34px; border-radius:50%; cursor:pointer; font-size:18px;
+}
+.close-btn:hover{ background:var(--brick); }
+.reader-body{ padding:24px 28px 30px; }
+
+.audio-bar{
+  display:flex; align-items:center; gap:10px; flex-wrap:wrap;
+  background:var(--paper-dark); padding:12px 16px; border-radius:14px; margin-bottom:20px;
+  font-family:'Tahoma',sans-serif;
+}
+.audio-bar b{ color:var(--teal-dark); font-size:13px;}
+.audio-bar button{
+  border:1px solid var(--teal); background:#fff; color:var(--teal-dark);
+  padding:6px 14px; border-radius:20px; cursor:pointer; font-size:13px; transition:.2s;
+}
+.audio-bar button.speed.active, .audio-bar button:hover{ background:var(--teal); color:#fff;}
+.audio-bar button.stop-btn{ border-color:var(--brick); color:var(--brick);}
+.audio-bar button.stop-btn:hover{ background:var(--brick); color:#fff;}
+
+.passage-text{ font-size:18px; line-height:2; }
+.passage-text p{ margin:0 0 16px; }
+.hl{
+  color:var(--brick); font-weight:bold; cursor:pointer; border-bottom:2px dotted var(--gold);
+  padding:0 1px; position:relative;
+}
+.hl:hover{ background:#fdeecb; }
+.hl-tip{
+  position:absolute; bottom:125%; left:50%; transform:translateX(-50%);
+  background:var(--teal-dark); color:#fdf6e3; padding:8px 12px; border-radius:10px;
+  font-family:'Tahoma',sans-serif; font-size:13px; white-space:nowrap; z-index:20;
+  box-shadow:0 6px 16px rgba(0,0,0,.3);
+}
+.hl-tip::after{
+  content:""; position:absolute; top:100%; left:50%; transform:translateX(-50%);
+  border:6px solid transparent; border-top-color:var(--teal-dark);
+}
+
+.dialogue-line{ margin-bottom:14px; }
+.dialogue-line b.speaker{ color:var(--teal-dark); }
+
+.quiz-box{ margin-top:30px; border-top:2px dashed var(--cream-line); padding-top:24px; }
+.quiz-box h4{ color:var(--teal-dark); font-size:20px; margin-bottom:16px;}
+.q-item{ margin-bottom:18px; background:var(--paper-dark); padding:14px 16px; border-radius:12px;}
+.q-item p.q-text{ font-weight:bold; margin:0 0 10px; font-size:16px;}
+.q-item label{
+  display:block; padding:8px 12px; margin-bottom:6px; background:#fff; border-radius:8px;
+  cursor:pointer; font-family:'Tahoma',sans-serif; font-size:14px; border:1px solid var(--cream-line);
+  transition:.15s;
+}
+.q-item label:hover{ border-color:var(--teal);}
+.q-item label.correct{ background:#e4f5ea; border-color:var(--ok); color:#1f5c39; font-weight:bold;}
+.q-item label.wrong{ background:#fbe6e1; border-color:var(--bad); color:var(--brick); }
+.submit-quiz{
+  background:var(--brick); color:#fff; border:none; padding:12px 26px; border-radius:30px;
+  font-size:15px; cursor:pointer; font-family:'Tahoma',sans-serif; font-weight:bold;
+}
+.submit-quiz:hover{ background:#8f3220; }
+.quiz-result{ margin-top:14px; font-family:'Tahoma',sans-serif; font-weight:bold; font-size:16px;}
+
+.vocab-list-inline{ margin-top:22px; }
+.vocab-list-inline h4{ color:var(--teal-dark); font-size:16px; margin-bottom:10px; font-family:'Tahoma',sans-serif;}
+.vocab-chip{
+  display:inline-flex; align-items:center; gap:6px; background:var(--paper-dark);
+  padding:6px 12px; border-radius:20px; margin:4px 6px 4px 0; font-family:'Tahoma',sans-serif; font-size:13px;
+  cursor:pointer; border:1px solid var(--cream-line);
+}
+.vocab-chip:hover{ background:var(--gold); color:#fff;}
+
+/* ---------- VOCAB BANK ---------- */
+.vocab-toolbar{ text-align:center; margin-bottom:24px; }
+.vocab-toolbar input{
+  width:100%; max-width:360px; padding:12px 18px; border-radius:30px; border:2px solid var(--cream-line);
+  font-family:'Tahoma',sans-serif; font-size:15px; outline:none;
+}
+.vocab-toolbar input:focus{ border-color:var(--teal); }
+.vocab-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:16px; }
+.vcard{
+  background:#fffdf6; border:1px solid var(--cream-line); border-radius:14px; padding:16px 18px;
+  box-shadow:var(--shadow); transition:.2s;
+}
+.vcard:hover{ transform:translateY(-4px); }
+.vcard .top{ display:flex; justify-content:space-between; align-items:center; }
+.vcard .word{ font-size:18px; font-weight:bold; color:var(--teal-dark);}
+.vcard .speak{
+  background:var(--teal); color:#fff; border:none; width:30px;height:30px; border-radius:50%;
+  cursor:pointer; font-size:13px;
+}
+.vcard .speak:hover{ background:var(--gold);}
+.vcard .meaning{ color:var(--brick); font-family:'Tahoma',sans-serif; margin:6px 0; font-size:15px;}
+.vcard .example{ font-size:13px; color:#5a5245; font-style:italic;}
+.vcard .tag{ display:inline-block; margin-top:8px; font-family:'Tahoma',sans-serif; font-size:10px; background:var(--paper-dark); padding:2px 8px; border-radius:10px; color:#7a6f5c;}
+
+/* ---------- VIDEOS ---------- */
+.video-grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:24px; }
+.vid-card{ background:#fffdf6; border:1px solid var(--cream-line); border-radius:16px; overflow:hidden; box-shadow:var(--shadow);}
+.vid-card .frame-wrap{ position:relative; padding-top:56.25%; background:#000;}
+.vid-card .frame-wrap.short{ padding-top:177.78%; max-width:280px; margin:0 auto; }
+.vid-card .frame-wrap iframe{ position:absolute; inset:0; width:100%; height:100%; border:0;}
+.vid-card .info{ padding:14px 16px;}
+.vid-card .info h4{ margin:0 0 4px; color:var(--teal-dark); font-size:16px;}
+.vid-card .info p{ margin:0; font-family:'Tahoma',sans-serif; font-size:13px; color:#5a5245;}
+.vid-card.acc-0{ border-top:5px solid var(--teal); }
+.vid-card.acc-1{ border-top:5px solid var(--coral); }
+.vid-card.acc-2{ border-top:5px solid var(--mint); }
+.vid-card.acc-3{ border-top:5px solid var(--purple); }
+.vid-card.acc-4{ border-top:5px solid var(--sun); }
+.vid-card.acc-5{ border-top:5px solid var(--brick); }
+.vid-card .link-edit{ display:flex; gap:6px; padding:0 16px 14px; }
+.vid-card .link-edit input{
+  flex:1; padding:8px 10px; border-radius:8px; border:1px solid var(--cream-line); font-size:12px; font-family:'Tahoma',sans-serif;
+}
+.vid-card .link-edit button{
+  background:var(--teal); color:#fff; border:none; padding:8px 12px; border-radius:8px; cursor:pointer; font-size:12px;
+}
+.vid-card .link-edit button:hover{ background:var(--gold);}
+
+footer{
+  background:var(--teal-dark); color:#cfe3d8; text-align:center; padding:34px 20px; margin-top:40px;
+  font-family:'Tahoma',sans-serif; font-size:13px;
+}
+footer b{ color:var(--gold); }
+
+@media (max-width:640px){
+  nav.icons button span.lbl{ display:none; }
+  .brand .txt b{ font-size:16px;}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-wrap">
+    <div class="brand">
+      <div class="stamp-logo">MN</div>
+      <div class="txt">
+        <b>Mr Mostafa Nasar</b>
+        <span>Learning · B1–B2</span>
+      </div>
+    </div>
+    <nav class="icons">
+      <button onclick="goTo('home')">🏠 <span class="lbl">Home</span></button>
+      <button onclick="goTo('reading')">📖 <span class="lbl">Reading</span></button>
+      <button onclick="goTo('conversation')">💬 <span class="lbl">Conversation</span></button>
+      <button onclick="goTo('vocab')">📚 <span class="lbl">Vocabulary</span></button>
+      <button onclick="goTo('videos')">🎬 <span class="lbl">Videos</span></button>
+      <button onclick="goTo('speakfast')">⚡ <span class="lbl">Speak Fast</span></button>
+    </nav>
+  </div>
+</header>
+
+<section id="home" class="hero">
+  <h1 class="eng-font">Your Journey to Fluent English</h1>
+  <div class="sub-ar ar">رحلتك التفاعلية لإتقان الإنجليزية — من المستوى B1 حتى B2</div>
+  <p class="sub-en">Four reading passages, four real-life conversations, a 50-word vocabulary bank, listening at your own speed, and short video lessons — all in one page. Click any colored word to hear it and see its Arabic meaning.</p>
+  <div class="passport">
+    <div class="stat"><b>4</b><span>Reading Passages</span></div>
+    <div class="stat"><b>4</b><span>Conversations</span></div>
+    <div class="stat"><b>50</b><span>Vocabulary Words</span></div>
+    <div class="stat"><b id="doneCount">0</b><span>Quizzes Completed</span></div>
+  </div>
+</section>
+
+<section id="reading">
+  <div class="section-head">
+    <div class="eyebrow ar">قسم القراءة</div>
+    <h2>Reading Passages</h2>
+    <p class="ar">اضغط على أي بطاقة لفتح القطعة، والاستماع، وحل الأسئلة</p>
+  </div>
+  <div id="readingGrid" class="cards-grid"></div>
+</section>
+
+<section id="conversation">
+  <div class="section-head">
+    <div class="eyebrow ar">قسم المحادثة</div>
+    <h2>Real-Life Conversations</h2>
+    <p class="ar">حوارات واقعية بالإنجليزية والعربية مع تدريبات وأسئلة</p>
+  </div>
+  <div id="conversationGrid" class="cards-grid"></div>
+</section>
+
+<section id="vocab">
+  <div class="section-head">
+    <div class="eyebrow ar">بنك الكلمات</div>
+    <h2>Vocabulary Bank · 50 Words</h2>
+    <p class="ar">ابحث عن أي كلمة، واضغط 🔊 لسماع النطق الصحيح</p>
+  </div>
+  <div class="vocab-toolbar">
+    <input id="vocabSearch" type="text" placeholder="🔍 Search a word... ابحث عن كلمة" oninput="renderVocab()">
+  </div>
+  <div id="vocabGrid" class="vocab-grid"></div>
+</section>
+
+<section id="videos">
+  <div class="section-head">
+    <div class="eyebrow ar">فيديوهات تعليمية</div>
+    <h2>Video Lessons</h2>
+    <p class="ar">فيديوهات قصيرة (حوالي 5 دقائق) لتقوية مهارة الاستماع — يمكنك تغيير أي رابط بلصق رابط يوتيوب جديد</p>
+  </div>
+  <div id="videoGrid" class="video-grid"></div>
+</section>
+
+<section id="speakfast">
+  <div class="section-head">
+    <div class="eyebrow ar" style="color:var(--purple);">تدريب سريع</div>
+    <h2>⚡ Speak Fast</h2>
+    <p class="ar">مقاطع قصيرة إضافية لتقوية أذنك على سرعة الكلام الطبيعية</p>
+  </div>
+  <div id="videoGridFast" class="video-grid"></div>
+</section>
+
+<footer>
+  Designed with care for <b>Mr Mostafa Nasar's</b> students · English Learning Platform B1–B2<br>
+  تم التصميم خصيصاً لطلاب الأستاذ مصطفى نصار
+</footer>
+
+<div class="overlay" id="readerOverlay">
+  <div class="reader" id="readerContent"></div>
+</div>
+
+<script>
+/* =========================================================
+   DATA
+========================================================= */
+const READING = [
+  {
+    id:'r1', kind:'reading',
+    titleEn:'The Silent Language of Bees', titleAr:'اللغة الصامتة للنحل',
+    level:'B1', minutes:4,
+    text:`Deep inside a beehive, thousands of bees communicate without saying a single word. When a worker bee finds a rich patch of flowers, she returns to the hive and performs a special dance, moving in the shape of a figure eight. This is called the "waggle dance", and it tells the other bees the exact direction and distance of the food, using the sun as a compass. Scientists have studied this behaviour for decades, and they still find new details every year.
+    Bees are also incredibly organised. Each bee has a specific role: some clean the hive, some guard the entrance, and others take care of the young. A single colony can contain more than fifty thousand bees, yet they rarely collide or create chaos. Researchers believe this natural order could inspire better designs for traffic systems and even computer networks.
+    Unfortunately, bee populations are declining around the world because of pesticides, climate change, and the loss of wildflowers. Since bees pollinate around one third of the food we eat, protecting them has become an urgent global priority. Many cities now encourage people to plant flowers on rooftops and balconies to give bees a safe place to feed. Small actions, city planners argue, can make a genuine difference to this ancient and essential insect.`,
+    vocab:[
+      {w:'beehive', ar:'خلية نحل', ex:'The beehive was full of golden honey.'},
+      {w:'communicate', ar:'يتواصل', ex:'Dolphins communicate using clicks and whistles.'},
+      {w:'compass', ar:'بوصلة', ex:'A compass always points to the north.'},
+      {w:'colony', ar:'مستعمرة (مجموعة كائنات)', ex:'The ant colony had thousands of members.'},
+      {w:'pollinate', ar:'يُلقّح (النباتات)', ex:'Bees pollinate flowers as they collect nectar.'},
+      {w:'decline', ar:'يتراجع / ينخفض', ex:'Fish numbers decline when rivers are polluted.'},
+      {w:'urgent', ar:'عاجل / ملّح', ex:'We need an urgent solution to this problem.'},
+      {w:'priority', ar:'أولوية', ex:'Safety is our top priority at work.'},
+    ],
+    quiz:[
+      {q:'What does the "waggle dance" tell other bees?', opts:['The weather tomorrow','The direction and distance of food','How to build a hive','The queen\'s age'], correct:1},
+      {q:'How many bees can a single colony contain?', opts:['About 500','About 5,000','More than 50,000','Only 100'], correct:2},
+      {q:'What is one reason bee populations are declining?', opts:['Too much rain','Pesticides and climate change','Too many flowers','Bees are too organised'], correct:1},
+      {q:'About how much of our food do bees help pollinate?', opts:['One tenth','One third','Almost all of it','None of it'], correct:1},
+      {q:'What are cities encouraging people to do to help bees?', opts:['Use more pesticides','Remove all flowers','Plant flowers on rooftops','Build more roads'], correct:2},
+    ]
+  },
+  {
+    id:'r2', kind:'reading',
+    titleEn:'Digital Nomads: Working From Anywhere', titleAr:'الرحّالة الرقميون: العمل من أي مكان',
+    level:'B1-B2', minutes:5,
+    text:`A decade ago, working on a laptop from a beach in Bali or a café in Lisbon seemed like a distant dream for most people. Today, thanks to fast internet and flexible companies, millions of "digital nomads" travel the world while keeping their full-time jobs. These remote workers plan their routine around time zones, video calls, and reliable Wi-Fi rather than a fixed office.
+    Several countries have noticed this trend and created special visas to attract these travellers. Portugal, Croatia, and Indonesia, for example, now offer long-term permits specifically for people who earn money online. Local economies benefit because digital nomads often stay for months, renting apartments and spending money in small businesses, unlike typical tourists who visit for only a week.
+    However, this lifestyle is not always easy. Constant travel can be exhausting, and maintaining close friendships becomes difficult when you move every few weeks. Some nomads eventually choose a "slow travel" approach, staying in one city for three or four months to build a genuine routine and community. Whether this way of working is a long-term trend or simply a phase, it has clearly changed how many people define the words "office" and "home".`,
+    vocab:[
+      {w:'nomad', ar:'رحّالة / بدوي', ex:'She became a digital nomad after quitting her office job.'},
+      {w:'remote', ar:'عن بُعد', ex:'He has worked remotely for three years.'},
+      {w:'reliable', ar:'يُعتمد عليه', ex:'We need a reliable internet connection.'},
+      {w:'attract', ar:'يجذب', ex:'The museum attracts thousands of visitors.'},
+      {w:'permit', ar:'تصريح', ex:'You need a permit to work in this country.'},
+      {w:'economy', ar:'اقتصاد', ex:'Tourism supports the local economy.'},
+      {w:'exhausting', ar:'مُرهق', ex:'The long flight was exhausting.'},
+      {w:'genuine', ar:'حقيقي / أصيل', ex:'They built a genuine friendship over the years.'},
+    ],
+    quiz:[
+      {q:'What has made the digital nomad lifestyle possible?', opts:['Cheaper flights only','Fast internet and flexible companies','Government orders','Shorter working hours'], correct:1},
+      {q:'Why do some countries offer special visas?', opts:['To stop tourism','To attract remote workers','To reduce internet use','To increase taxes only'], correct:1},
+      {q:'How do digital nomads usually benefit local economies?', opts:['They avoid spending money','They stay briefly like tourists','They rent apartments and spend locally for months','They only shop online'], correct:2},
+      {q:'What is one challenge of the nomad lifestyle mentioned?', opts:['Too much free time','Difficulty maintaining friendships','Lack of laptops','Too many holidays'], correct:1},
+      {q:'What is "slow travel"?', opts:['Travelling very slowly by car','Staying months in one city to build routine','Avoiding all travel','Working only at night'], correct:1},
+    ]
+  },
+  {
+    id:'r3', kind:'reading',
+    titleEn:'The Great Barrier Reef: A World in Danger', titleAr:'الحاجز المرجاني العظيم: عالم في خطر',
+    level:'B2', minutes:5,
+    text:`Stretching for more than two thousand kilometres off the coast of Australia, the Great Barrier Reef is the largest living structure on Earth, so vast that it can be seen from space. It is home to thousands of species of fish, colourful coral, sea turtles, and sharks, making it one of the richest ecosystems on the planet. For millions of tourists, diving here is a once-in-a-lifetime experience.
+    Yet this natural wonder is under serious threat. Rising sea temperatures cause a process called "coral bleaching", where stressed coral loses its vivid colour and, if conditions do not improve, eventually dies. Scientists have recorded several mass bleaching events in the last decade alone, and some sections of the reef may never fully recover. Pollution, overfishing, and shipping traffic add further pressure on this fragile environment.
+    Despite the alarming statistics, there is genuine hope. Marine biologists are experimenting with "coral gardening", growing resilient coral in nurseries before transplanting it back onto damaged reefs. Local communities and the tourism industry have also become more involved, funding conservation projects and promoting responsible diving practices. Protecting the reef, experts insist, is not only about saving marine life; it is about preserving an entire ecosystem that supports fishing industries and coastal communities for generations to come.`,
+    vocab:[
+      {w:'ecosystem', ar:'نظام بيئي', ex:'The rainforest is a rich ecosystem.'},
+      {w:'threat', ar:'تهديد', ex:'Pollution is a major threat to the ocean.'},
+      {w:'bleaching', ar:'ابيضاض / فقدان اللون', ex:'Coral bleaching happens when the water is too warm.'},
+      {w:'fragile', ar:'هشّ / سريع التأثر', ex:'The glass vase is very fragile.'},
+      {w:'resilient', ar:'قادر على التكيف والصمود', ex:'These plants are resilient to dry weather.'},
+      {w:'transplant', ar:'ينقل ويزرع من جديد', ex:'Doctors will transplant the organ tomorrow.'},
+      {w:'conservation', ar:'الحفاظ على البيئة', ex:'The charity funds conservation of endangered animals.'},
+      {w:'coastal', ar:'ساحلي', ex:'Many coastal towns depend on fishing.'},
+    ],
+    quiz:[
+      {q:'Why is the Great Barrier Reef unique?', opts:['It is the smallest structure on Earth','It is the largest living structure on Earth','It has no marine life','It is located in Europe'], correct:1},
+      {q:'What causes coral bleaching?', opts:['Cold sea temperatures','Rising sea temperatures','Too many fish','Strong winds'], correct:1},
+      {q:'What is "coral gardening"?', opts:['Growing coral in nurseries to replant it','Cutting coral to sell it','A type of fishing','A tourist activity only'], correct:0},
+      {q:'Besides climate change, what else threatens the reef?', opts:['Too few tourists','Pollution and overfishing','Too much rain','Cold weather'], correct:1},
+      {q:'According to the text, why does protecting the reef matter?', opts:['It only matters for tourists','It supports fishing industries and coastal communities','It has no real importance','It only affects Australia\'s government'], correct:1},
+    ]
+  },
+  {
+    id:'r4', kind:'reading',
+    titleEn:'From Street Food to Michelin Stars', titleAr:'من طعام الشارع إلى نجوم ميشلان',
+    level:'B1-B2', minutes:4,
+    text:`In cities like Bangkok, Mexico City, and Istanbul, some of the most memorable meals are not served in fancy restaurants but from small carts and stalls on the street. Street food has fed working people quickly and cheaply for centuries, and it often reflects the true identity of a culture better than any formal restaurant menu. Recipes are passed down through generations, sometimes never written on paper at all.
+    In recent years, however, the culinary world has started paying much closer attention to these humble dishes. Renowned chefs travel specifically to try street food, and food critics write detailed reviews about a single noodle stall hidden in a back alley. Remarkably, a handful of street food vendors have even received prestigious awards, including Michelin stars, an honour traditionally reserved for elegant, expensive restaurants.
+    This shift has sparked an interesting debate. Some worry that fame and social media attention will change these dishes, making vendors raise prices or simplify recipes to please a wider audience. Others argue that recognition finally gives hardworking cooks the respect and income they deserve after years of being overlooked. Either way, this global appreciation shows that exceptional cooking has never depended on a fancy setting, only on skill, passion, and fresh ingredients.`,
+    vocab:[
+      {w:'stall', ar:'كشك / عربة بيع', ex:'She bought mangoes from a street stall.'},
+      {w:'identity', ar:'هوية', ex:'Food is a big part of a country\'s identity.'},
+      {w:'humble', ar:'متواضع', ex:'It started as a humble little shop.'},
+      {w:'renowned', ar:'مشهور جداً', ex:'He is a renowned chef in Paris.'},
+      {w:'prestigious', ar:'مرموق / ذو مكانة', ex:'She won a prestigious award.'},
+      {w:'recognition', ar:'اعتراف / تقدير', ex:'He finally received recognition for his work.'},
+      {w:'overlooked', ar:'مُتجاهَل / غير ملحوظ', ex:'Her talent was overlooked for years.'},
+      {w:'ingredients', ar:'مكوّنات (الطعام)', ex:'Fresh ingredients make a big difference.'},
+    ],
+    quiz:[
+      {q:'What does street food often reflect, according to the text?', opts:['Government policy','The true identity of a culture','Only tourist tastes','Nothing important'], correct:1},
+      {q:'What surprising honour have some street vendors received?', opts:['A government medal','Michelin stars','A television show','Free rent'], correct:1},
+      {q:'What worry do some people have about street food becoming famous?', opts:['It will disappear completely','Prices may rise and recipes may change','It will become too cheap','Nobody will notice it'], correct:1},
+      {q:'What do others believe fame gives to street food vendors?', opts:['Nothing at all','Respect and deserved income','More competition only','Less customers'], correct:1},
+      {q:'What does the text say exceptional cooking depends on?', opts:['An expensive restaurant setting','Skill, passion, and fresh ingredients','Fame on social media','Michelin inspectors only'], correct:1},
+    ]
+  },
+];
+
+const CONVERSATION = [
+  {
+    id:'c1', kind:'conversation',
+    titleEn:'A Job Interview at a Tech Startup', titleAr:'مقابلة عمل في شركة تقنية ناشئة',
+    level:'B1-B2', minutes:4,
+    lines:[
+      ['Interviewer','Good morning, thank you for coming in. Could you briefly walk me through your background?'],
+      ['Candidate','Good morning, and thank you for having me. I graduated in computer science and have spent the last two years developing mobile applications for a mid-sized company.'],
+      ['Interviewer','That sounds relevant. What made you apply for this particular position?'],
+      ['Candidate','Honestly, I admire how your company encourages employees to take initiative. I want to work somewhere I can contribute ideas, not just follow instructions.'],
+      ['Interviewer','We definitely value that. Can you describe a time you solved a difficult problem under pressure?'],
+      ['Candidate','Certainly. Last year, our app crashed right before a major product launch. I stayed late with my team, identified the bug within a few hours, and we released a fix before the deadline.'],
+      ['Interviewer','Impressive. Do you have any questions for us?'],
+      ['Candidate','Yes, actually. What does a typical career path look like for someone in this role?'],
+      ['Interviewer','Great question. Most developers move into a senior role within two years if they show consistent initiative, much like the story you just shared.'],
+    ],
+    vocab:[
+      {w:'background', ar:'الخلفية (المهنية/العلمية)', ex:'Tell me about your professional background.'},
+      {w:'relevant', ar:'ذو صلة / مناسب', ex:'That experience is very relevant to this job.'},
+      {w:'initiative', ar:'مبادرة', ex:'She showed great initiative by solving it herself.'},
+      {w:'contribute', ar:'يساهم', ex:'Everyone can contribute ideas in this meeting.'},
+      {w:'deadline', ar:'موعد نهائي', ex:'We must finish before the deadline.'},
+      {w:'consistent', ar:'مستمر / ثابت', ex:'He shows consistent effort every week.'},
+    ],
+    quiz:[
+      {q:'What is the candidate\'s educational background?', opts:['Business management','Computer science','Medicine','Law'], correct:1},
+      {q:'Why did the candidate apply for this job?', opts:['Higher salary only','The company encourages taking initiative','A friend recommended it','Shorter working hours'], correct:1},
+      {q:'What problem did the candidate solve last year?', opts:['A late delivery','An app crash before launch','A hiring issue','A budget error'], correct:1},
+      {q:'What did the candidate ask the interviewer?', opts:['About the salary','About the typical career path','About holidays','About the office location'], correct:1},
+    ]
+  },
+  {
+    id:'c2', kind:'conversation',
+    titleEn:'Planning a Backpacking Trip to Southeast Asia', titleAr:'التخطيط لرحلة ظهر إلى جنوب شرق آسيا',
+    level:'B1', minutes:4,
+    lines:[
+      ['Sara','I finally booked my flight to Vietnam! Now I need to figure out an itinerary for three weeks.'],
+      ['Omar','That\'s exciting! Are you travelling alone or joining a group?'],
+      ['Sara','Alone, but I\'ve heard it\'s easy to meet other backpackers in hostels along the way.'],
+      ['Omar','True. Just make sure you pack light — a big backpack becomes exhausting after the first week.'],
+      ['Sara','Good point. What about transportation between cities?'],
+      ['Omar','Overnight buses are cheap and save you a night of accommodation, but book trains in advance during holidays since they sell out fast.'],
+      ['Sara','Noted. Do you think I should exchange money before I arrive?'],
+      ['Omar','Just bring a small amount for the airport. ATMs are everywhere, and the exchange rate is usually better in the city.'],
+      ['Sara','Perfect, that\'s one less thing to worry about. Thanks for the advice!'],
+    ],
+    vocab:[
+      {w:'itinerary', ar:'خطة رحلة / برنامج سفر', ex:'Our itinerary includes five cities in ten days.'},
+      {w:'backpacker', ar:'مسافر بحقيبة ظهر', ex:'The hostel was full of young backpackers.'},
+      {w:'accommodation', ar:'مكان إقامة / سكن', ex:'We booked cheap accommodation near the beach.'},
+      {w:'in advance', ar:'مسبقاً', ex:'Please book your ticket in advance.'},
+      {w:'exchange rate', ar:'سعر الصرف', ex:'The exchange rate changes every day.'},
+      {w:'pack light', ar:'يسافر بأمتعة خفيفة', ex:'Experienced travellers always pack light.'},
+    ],
+    quiz:[
+      {q:'How long will Sara travel?', opts:['One week','Three weeks','A whole year','Ten days'], correct:1},
+      {q:'What advice does Omar give about the backpack?', opts:['Buy a bigger one','Pack light','Leave it at home','Rent one'], correct:1},
+      {q:'What does Omar say about trains during holidays?', opts:['They are always empty','They sell out fast, so book in advance','They don\'t run','They are free'], correct:1},
+      {q:'What does Omar recommend about money?', opts:['Exchange everything before arrival','Bring a small amount and use ATMs later','Only use credit cards','Avoid banks completely'], correct:1},
+    ]
+  },
+  {
+    id:'c3', kind:'conversation',
+    titleEn:"At the Doctor's: Explaining Symptoms", titleAr:'عند الطبيب: شرح الأعراض',
+    level:'B1', minutes:3,
+    lines:[
+      ['Doctor','Good afternoon. What seems to be the problem today?'],
+      ['Patient','I\'ve had a sore throat and a mild fever since Monday, and I feel quite tired.'],
+      ['Doctor','I see. Have you noticed any other symptoms, like a cough or headache?'],
+      ['Patient','A slight cough, yes, but no headache. It gets worse at night.'],
+      ['Doctor','Let me check your throat and listen to your chest… Your throat looks a little inflamed, but your lungs sound clear.'],
+      ['Patient','Is it something serious, doctor?'],
+      ['Doctor','It appears to be a common viral infection. I\'ll prescribe some medication to reduce the fever and ease the throat pain.'],
+      ['Patient','Should I stay home from work?'],
+      ['Doctor','I\'d recommend resting for two or three days and drinking plenty of fluids. Come back if the fever doesn\'t improve.'],
+    ],
+    vocab:[
+      {w:'symptom', ar:'عَرَض (مرضي)', ex:'A high temperature is a common symptom of flu.'},
+      {w:'fever', ar:'حمّى', ex:'She has a fever and needs to rest.'},
+      {w:'inflamed', ar:'ملتهب', ex:'His throat was red and inflamed.'},
+      {w:'prescribe', ar:'يصف دواء', ex:'The doctor will prescribe some antibiotics.'},
+      {w:'viral infection', ar:'عدوى فيروسية', ex:'A viral infection usually goes away on its own.'},
+      {w:'fluids', ar:'سوائل', ex:'Drink plenty of fluids when you are sick.'},
+    ],
+    quiz:[
+      {q:'What are the patient\'s main symptoms?', opts:['Broken leg and headache','Sore throat, mild fever, and tiredness','Stomach ache','Toothache'], correct:1},
+      {q:'What did the doctor find when checking the patient?', opts:['A serious lung problem','An inflamed throat but clear lungs','Nothing unusual at all','A high fever only'], correct:1},
+      {q:'What does the doctor prescribe?', opts:['Surgery','Medication for fever and throat pain','A strict diet','Nothing'], correct:1},
+      {q:'What does the doctor recommend besides medication?', opts:['Going to work as usual','Resting and drinking fluids','Travelling immediately','Avoiding water'], correct:1},
+    ]
+  },
+  {
+    id:'c4', kind:'conversation',
+    titleEn:'Negotiating a Price at a Local Market', titleAr:'التفاوض على السعر في سوق محلي',
+    level:'B1', minutes:3,
+    lines:[
+      ['Tourist','Excuse me, how much is this handmade scarf?'],
+      ['Vendor','For you, my friend, twenty dollars. Beautiful quality, made by local women.'],
+      ['Tourist','It\'s lovely, but that\'s a bit more than I expected. Would you consider twelve?'],
+      ['Vendor','Twelve is too low, but because you\'re my first customer today, I can do sixteen.'],
+      ['Tourist','I appreciate that. How about fourteen, and I\'ll also take this small bag?'],
+      ['Vendor','You drive a hard bargain! Alright, fourteen for the scarf and ten for the bag together.'],
+      ['Tourist','Deal! Thank you so much, and good luck with the rest of your sales today.'],
+      ['Vendor','Thank you, come back anytime you visit again!'],
+    ],
+    vocab:[
+      {w:'handmade', ar:'مصنوع يدوياً', ex:'These shoes are handmade in Italy.'},
+      {w:'negotiate', ar:'يفاوض', ex:'You can negotiate the price at most markets.'},
+      {w:'bargain', ar:'يساوم / صفقة جيدة', ex:'She drives a hard bargain when shopping.'},
+      {w:'consider', ar:'يفكّر في / يأخذ بعين الاعتبار', ex:'Please consider my offer.'},
+      {w:'quality', ar:'جودة', ex:'This fabric is of excellent quality.'},
+      {w:'deal', ar:'اتفاق / صفقة', ex:'We finally made a deal on the price.'},
+    ],
+    quiz:[
+      {q:'What is the tourist trying to buy?', opts:['A hat and shoes','A scarf and a small bag','A carpet','A necklace'], correct:1},
+      {q:'What was the vendor\'s first price for the scarf?', opts:['Ten dollars','Twenty dollars','Five dollars','Fifty dollars'], correct:1},
+      {q:'What final price did they agree on for both items?', opts:['Twelve and eight','Fourteen and ten','Twenty and twenty','Sixteen and five'], correct:1},
+      {q:'What does the vendor mean by "you drive a hard bargain"?', opts:['The tourist is a bad driver','The tourist negotiates well','The tourist is rude','The tourist paid full price'], correct:1},
+    ]
+  },
+];
+
+const ALL_PASSAGES = [...READING, ...CONVERSATION];
+
+// Build a flat vocabulary bank of ~50 words from all passages
+const VOCAB_BANK = [];
+ALL_PASSAGES.forEach(p=>{
+  p.vocab.forEach(v=> VOCAB_BANK.push({...v, from:p.titleEn}));
+});
+
+const VIDEOS = [
+  {title:'Video Lesson 1', ar:'فيديو 1', id:'THxRBaAte8o', desc:'Short listening practice clip.'},
+  {title:'Video Lesson 2', ar:'فيديو 2', id:'LRFx1WVtLOA', desc:'Short listening practice clip.'},
+  {title:'Video Lesson 3', ar:'فيديو 3', id:'dN1Fqp6pXDQ', desc:'Short listening practice clip.'},
+  {title:'Video Lesson 4', ar:'فيديو 4', id:'pjhx3e8ZbKs', desc:'Short listening practice clip.'},
+  {title:'Video Lesson 5', ar:'فيديو 5', id:'VVctHBDLUoo', desc:'Short listening practice clip.'},
+  {title:'Video Lesson 6', ar:'فيديو 6', id:'5W9yE9hMssc', desc:'Short listening practice clip.'},
+];
+
+const VIDEOS_FAST = [
+  {title:'Speak Fast 1', ar:'تدريب سريع 1', id:'6czMlTtatcw', desc:'Fast natural-speed speaking practice.'},
+  {title:'Speak Fast 2', ar:'تدريب سريع 2', id:'rcI2M_Bq3Io', desc:'Fast natural-speed speaking practice.'},
+  {title:'Speak Fast 3', ar:'تدريب سريع 3', id:'JnvhxGQBPqM', desc:'Fast natural-speed speaking practice.'},
+  {title:'Speak Fast 4', ar:'تدريب سريع 4', id:'fl-VgQqUZDs', desc:'Fast natural-speed speaking practice.'},
+  {title:'Speak Fast 5', ar:'تدريب سريع 5', id:'NImJr_SSEYY', desc:'Fast natural-speed speaking practice.'},
+  {title:'Speak Fast 6', ar:'تدريب سريع 6', id:'7ybx6h464fI', desc:'Fast natural-speed speaking practice.'},
+];
+
+let completedQuizzes = new Set();
+
+/* =========================================================
+   RENDER CARDS
+========================================================= */
+function cardHTML(p, idx){
+  const acc = (typeof idx==='number') ? 'acc-'+(idx%4) : '';
+  return `<div class="pass-card ${acc} ${completedQuizzes.has(p.id)?'done':''}" onclick="openReader('${p.id}')">
+    <div class="strip"><span>${p.level}</span><span>${p.minutes} min</span></div>
+    <div class="body">
+      <h3>${p.titleEn}</h3>
+      <div class="ar-title ar">${p.titleAr}</div>
+      <div class="meta"><span>🔊 Listen</span><span>📝 Quiz</span><span>${p.vocab.length} words</span></div>
+      <div class="dots ar">اضغط لفتح القطعة ⟶</div>
+    </div>
+  </div>`;
+}
+document.getElementById('readingGrid').innerHTML = READING.map(cardHTML).join('');
+document.getElementById('conversationGrid').innerHTML = CONVERSATION.map(cardHTML).join('');
+
+function goTo(id){ document.getElementById(id).scrollIntoView({behavior:'smooth'}); }
+
+/* =========================================================
+   VOCAB HIGHLIGHTING + SPEECH
+========================================================= */
+function escapeRegExp(s){ return s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'); }
+
+function highlight(text, vocabList){
+  let out = text;
+  vocabList.forEach(v=>{
+    const re = new RegExp('\\b('+escapeRegExp(v.w)+'s?)\\b','gi');
+    out = out.replace(re, (m)=>`<span class="hl" onclick="speakWord(event,'${v.w.replace(/'/g,"\\'")}','${v.ar.replace(/'/g,"\\'")}')">${m}</span>`);
+  });
+  return out;
+}
+
+let currentTip = null;
+function speakWord(ev, word, ar){
+  ev.stopPropagation();
+  if(currentTip){ currentTip.remove(); currentTip=null; }
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang='en-US'; u.rate=0.9;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+  const tip = document.createElement('div');
+  tip.className='hl-tip ar';
+  tip.textContent = ar;
+  ev.target.appendChild(tip);
+  currentTip = tip;
+  setTimeout(()=>{ if(tip) tip.remove(); if(currentTip===tip) currentTip=null; }, 2200);
+}
+
+let fullReadUtterance = null;
+function readFull(text, rate, btnGroup){
+  speechSynthesis.cancel();
+  const clean = text.replace(/<[^>]+>/g,' ').replace(/\s+/g,' ');
+  fullReadUtterance = new SpeechSynthesisUtterance(clean);
+  fullReadUtterance.lang='en-US';
+  fullReadUtterance.rate=rate;
+  speechSynthesis.speak(fullReadUtterance);
+  document.querySelectorAll('.speed').forEach(b=>b.classList.remove('active'));
+  if(btnGroup) btnGroup.classList.add('active');
+}
+function stopReading(){ speechSynthesis.cancel(); }
+
+/* =========================================================
+   READER MODAL
+========================================================= */
+function openReader(id){
+  const p = ALL_PASSAGES.find(x=>x.id===id);
+  let bodyHtml = '';
+  let plainText = '';
+
+  if(p.kind==='reading'){
+    const paras = p.text.trim().split(/\n\s+/);
+    bodyHtml = paras.map(par=>`<p>${highlight(par.trim(), p.vocab)}</p>`).join('');
+    plainText = paras.join(' ');
+  } else {
+    bodyHtml = p.lines.map(([sp,txt])=>{
+      plainText += sp+': '+txt+'. ';
+      return `<div class="dialogue-line"><b class="speaker">${sp}:</b> ${highlight(txt, p.vocab)}</div>`;
+    }).join('');
+  }
+
+  const vocabChips = p.vocab.map(v=>`<span class="vocab-chip" onclick="speakWord(event,'${v.w.replace(/'/g,"\\'")}','${v.ar.replace(/'/g,"\\'")}')">🔊 ${v.w} — <span class="ar">${v.ar}</span></span>`).join('');
+
+  const quizHtml = p.quiz.map((q,qi)=>`
+    <div class="q-item" data-correct="${q.correct}">
+      <p class="q-text">${qi+1}. ${q.q}</p>
+      ${q.opts.map((o,oi)=>`
+        <label data-oi="${oi}">
+          <input type="radio" name="q_${p.id}_${qi}" value="${oi}" style="margin-inline-end:8px;">${o}
+        </label>`).join('')}
+    </div>`).join('');
+
+  document.getElementById('readerContent').innerHTML = `
+    <div class="reader-head">
+      <button class="close-btn" onclick="closeReader()">✕</button>
+      <h3>${p.titleEn}</h3>
+      <div class="ar-title ar">${p.titleAr}</div>
+    </div>
+    <div class="reader-body">
+      <div class="audio-bar">
+        <b>🔊 Listen / استمع:</b>
+        <button class="speed" onclick="readFull(window.__pt, 0.7, this)">🐢 Slow</button>
+        <button class="speed active" onclick="readFull(window.__pt, 1, this)">🚶 Normal</button>
+        <button class="speed" onclick="readFull(window.__pt, 1.3, this)">🏃 Fast</button>
+        <button class="stop-btn" onclick="stopReading()">⏹ Stop</button>
+      </div>
+      <div class="passage-text">${bodyHtml}</div>
+      <div class="vocab-list-inline">
+        <h4 class="ar">📚 كلمات القطعة (اضغط للاستماع):</h4>
+        ${vocabChips}
+      </div>
+      <div class="quiz-box">
+        <h4>📝 Comprehension Quiz <span class="ar">— اختبر فهمك</span></h4>
+        ${quizHtml}
+        <button class="submit-quiz" onclick="gradeQuiz('${p.id}')">Submit Answers</button>
+        <div id="result_${p.id}" class="quiz-result"></div>
+      </div>
+    </div>`;
+  window.__pt = plainText;
+  document.getElementById('readerOverlay').classList.add('active');
+}
+function closeReader(){
+  speechSynthesis.cancel();
+  document.getElementById('readerOverlay').classList.remove('active');
+}
+document.getElementById('readerOverlay').addEventListener('click', (e)=>{
+  if(e.target.id==='readerOverlay') closeReader();
+});
+
+function gradeQuiz(id){
+  const box = document.querySelector(`#readerContent .quiz-box`);
+  const items = box.querySelectorAll('.q-item');
+  let score=0;
+  items.forEach(item=>{
+    const correct = parseInt(item.dataset.correct);
+    const selected = item.querySelector('input:checked');
+    const labels = item.querySelectorAll('label');
+    labels.forEach((lab,i)=>{
+      lab.querySelector('input').disabled = true;
+      if(i===correct) lab.classList.add('correct');
+      else if(selected && parseInt(selected.value)===i) lab.classList.add('wrong');
+    });
+    if(selected && parseInt(selected.value)===correct) score++;
+  });
+  const resultEl = document.getElementById('result_'+id);
+  const pct = Math.round(score/items.length*100);
+  resultEl.innerHTML = `Score: ${score}/${items.length} (${pct}%) — <span class="ar">${pct>=70?'أحسنت! نتيجة ممتازة 🎉':'حاول مرة أخرى لتحسين نتيجتك 💪'}</span>`;
+  completedQuizzes.add(id);
+  document.getElementById('doneCount').textContent = completedQuizzes.size;
+  document.getElementById('readingGrid').innerHTML = READING.map(cardHTML).join('');
+  document.getElementById('conversationGrid').innerHTML = CONVERSATION.map(cardHTML).join('');
+}
+
+/* =========================================================
+   VOCAB BANK RENDER
+========================================================= */
+function renderVocab(){
+  const q = document.getElementById('vocabSearch').value.trim().toLowerCase();
+  const list = VOCAB_BANK.filter(v=> v.w.toLowerCase().includes(q) || v.ar.includes(q));
+  document.getElementById('vocabGrid').innerHTML = list.map(v=>`
+    <div class="vcard">
+      <div class="top">
+        <span class="word">${v.w}</span>
+        <button class="speak" onclick="speakPlain('${v.w.replace(/'/g,"\\'")}')">🔊</button>
+      </div>
+      <div class="meaning ar">${v.ar}</div>
+      <div class="example">"${v.ex}"</div>
+      <span class="tag">${v.from}</span>
+    </div>`).join('') || `<p class="ar" style="text-align:center;">لا توجد نتائج مطابقة</p>`;
+}
+function speakPlain(word){
+  speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(word);
+  u.lang='en-US'; u.rate=0.9;
+  speechSynthesis.speak(u);
+}
+renderVocab();
+
+/* =========================================================
+   VIDEOS
+========================================================= */
+function videoEmbedSrc(v){
+  if(v.list) return `https://www.youtube.com/embed/videoseries?list=${v.list}`;
+  if(v.id) return `https://www.youtube.com/embed/${v.id}`;
+  return '';
+}
+function videoCardHTML(v, idx, group){
+  const src = videoEmbedSrc(v);
+  const uid = group+'_'+idx;
+  return `<div class="vid-card acc-${idx%6}" id="vidcard_${uid}">
+    <div class="frame-wrap short">
+      ${src ? `<iframe src="${src}" title="${v.title}" allowfullscreen></iframe>` : `<div style="color:#fff;display:flex;align-items:center;justify-content:center;height:100%;font-family:Tahoma;font-size:13px;text-align:center;padding:10px;">🎬 Paste a YouTube link below to load a video</div>`}
+    </div>
+    <div class="info">
+      <h4>${v.title} <span class="ar" style="font-size:13px;color:#8a92b2;">${v.ar||''}</span></h4>
+      <p>${v.desc}</p>
+    </div>
+    <div class="link-edit">
+      <input type="text" id="vidinput_${uid}" placeholder="Paste YouTube link or ID here">
+      <button onclick="loadVideo('${group}',${idx})">Load</button>
+    </div>
+  </div>`;
+}
+function renderVideos(){
+  document.getElementById('videoGrid').innerHTML = VIDEOS.map((v,i)=>videoCardHTML(v,i,'main')).join('');
+  document.getElementById('videoGridFast').innerHTML = VIDEOS_FAST.map((v,i)=>videoCardHTML(v,i,'fast')).join('');
+}
+function extractYouTubeId(input){
+  input = input.trim();
+  const patterns = [
+    /(?:youtube\.com\/shorts\/)([\w-]+)/,
+    /(?:youtube\.com\/watch\?v=)([\w-]+)/,
+    /(?:youtu\.be\/)([\w-]+)/,
+    /(?:youtube\.com\/embed\/)([\w-]+)/,
+  ];
+  for(const p of patterns){ const m = input.match(p); if(m) return m[1]; }
+  if(/^[\w-]{6,}$/.test(input)) return input;
+  return null;
+}
+function loadVideo(group, idx){
+  const uid = group+'_'+idx;
+  const val = document.getElementById('vidinput_'+uid).value;
+  const id = extractYouTubeId(val);
+  if(!id){ alert('Please paste a valid YouTube link.\nمن فضلك الصق رابط يوتيوب صحيح'); return; }
+  const arr = group==='main' ? VIDEOS : VIDEOS_FAST;
+  arr[idx].id = id;
+  arr[idx].list = null;
+  renderVideos();
+}
+renderVideos();
+</script>
+</body>
+</html>
